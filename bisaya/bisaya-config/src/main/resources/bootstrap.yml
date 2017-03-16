@@ -1,0 +1,15 @@
+
+spring:
+    application:
+        name: config
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/toedoro/spring-cloud-config.git
+      
+server:
+    port: 9000
+    context-path: /config
+    address: 0.0.0.0
+  
