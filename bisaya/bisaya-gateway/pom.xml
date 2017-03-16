@@ -10,7 +10,6 @@
 	<description>Bisaya Order Scheduling - Gateway</description>
 
 	<parent>
-		<relativePath/> <!-- lookup parent from repository -->
 		<groupId>ph.com.montrichard.bisaya</groupId>
 		<artifactId>bisaya</artifactId>
 		<version>1.0</version>
