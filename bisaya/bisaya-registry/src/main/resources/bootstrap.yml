@@ -1,0 +1,24 @@
+spring:
+    application:
+        name: bisaya-registry
+    cloud:
+        config:
+            uri: http://127.0.0.1:9000/config
+      
+server:
+    port: 9001
+    context-path: /registry
+    address: 0.0.0.0
+    
+eureka:
+    client:
+        register:
+            with-eureka: false
+        fetch-registry: false
+
+logging:
+    level:
+        com:
+            netflix:
+                eureka: OFF
+                discovery: OFF

@@ -26,10 +26,10 @@
 	</properties>
 	
 	<modules>
-
 		<module>bisaya-config</module>
-		
+		<module>bisaya-registry</module>
 		<module>bisaya-order</module>
+		<module>bisaya-production</module>
 	</modules>
 	
 	<dependencyManagement>

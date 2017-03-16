@@ -1,13 +1,13 @@
 
 spring:
     application:
-        name: bisaya-order
+        name: bisaya-production
     cloud:
         config:
             uri: http://127.0.0.1:9000/config
       
 server:
-    port: 9004
-    context-path: /order
+    port: 9003
+    context-path: /production
     address: 0.0.0.0
   
