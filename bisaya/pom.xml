@@ -30,6 +30,7 @@
 		<module>bisaya-registry</module>
 		<module>bisaya-order</module>
 		<module>bisaya-production</module>
+		<module>bisaya-gateway</module>
 	</modules>
 	
 	<dependencyManagement>
