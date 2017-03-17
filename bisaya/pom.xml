@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -31,7 +31,8 @@
 		<module>bisaya-order</module>
 		<module>bisaya-production</module>
 		<module>bisaya-gateway</module>
-	</modules>
+    <module>bisaya-common</module>
+  </modules>
 	
 	<dependencyManagement>
 		<dependencies>
@@ -73,7 +74,7 @@
 
 	<developers>
 		<developer>
-			<email>delacerna_teodoro@yahoo.com></email>
+			<email>delacerna_teodoro@yahoo.com&gt;</email>
 			<name>Teodoro dela Cerna jr.</name>
 			<roles>
 				<role>Software Development Engineer</role>
