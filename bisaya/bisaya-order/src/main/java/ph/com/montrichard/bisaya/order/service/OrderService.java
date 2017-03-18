@@ -20,7 +20,7 @@ import ph.com.montrichard.bisaya.order.entity.Order;
 @Service
 public class OrderService {
 	
-	Set<Order> orders = new HashSet<Order>();
+	Set<Order> orders = new HashSet<>();
 	
 	public Collection<Order> read( Integer offSet, Integer limit ){
 //		return orders.subList(offSet, limit);
@@ -33,6 +33,7 @@ public class OrderService {
 		BigInteger id = new BigInteger( new String(size+1+"") );
 		order.setId(id);
 		order.setOrderNo(orderNo);
+		order.setStatus("PENDING");
 		orders.add( order );
 		
 		return order;

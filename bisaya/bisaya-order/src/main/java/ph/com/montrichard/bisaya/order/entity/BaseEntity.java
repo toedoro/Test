@@ -21,12 +21,6 @@ public class BaseEntity implements Serializable {
 	
 	private Date createdDate;
 
-	private BigInteger createdBy;
-
-	private Date lastModifiedDate;
-
-	private BigInteger lastModifiedBy;
-	
 	/**
 	 * @return the id
 	 */
@@ -40,7 +34,6 @@ public class BaseEntity implements Serializable {
 	public void setId(BigInteger id) {
 		this.id = id;
 	}
-	
 
 	/**
 	 * @return the createdDate
@@ -54,48 +47,6 @@ public class BaseEntity implements Serializable {
 	 */
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
-	}
-
-	/**
-	 * @return the createdBy
-	 */
-	public BigInteger getCreatedBy() {
-		return createdBy;
-	}
-
-	/**
-	 * @param createdBy the createdBy to set
-	 */
-	public void setCreatedBy(BigInteger createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	/**
-	 * @return the lastModifiedDate
-	 */
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	/**
-	 * @param lastModifiedDate the lastModifiedDate to set
-	 */
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
-	}
-
-	/**
-	 * @return the lastModifiedBy
-	 */
-	public BigInteger getLastModifiedBy() {
-		return lastModifiedBy;
-	}
-
-	/**
-	 * @param lastModifiedBy the lastModifiedBy to set
-	 */
-	public void setLastModifiedBy(BigInteger lastModifiedBy) {
-		this.lastModifiedBy = lastModifiedBy;
 	}
 	
 }

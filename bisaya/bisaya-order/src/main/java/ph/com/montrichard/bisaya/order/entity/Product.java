@@ -30,8 +30,9 @@ public class Product extends BaseEntity implements Comparable<Product>{
 	/**
 	 * @param title the title to set
 	 */
-	public void setTitle(String title) {
+	public Product setTitle(String title) {
 		this.title = title;
+		return this;
 	}
 
 	/**
@@ -44,8 +45,9 @@ public class Product extends BaseEntity implements Comparable<Product>{
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
+	public Product setDescription(String description) {
 		this.description = description;
+		return this;
 	}
 
 	/**
@@ -58,8 +60,9 @@ public class Product extends BaseEntity implements Comparable<Product>{
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(BigDecimal price) {
+	public Product setPrice(BigDecimal price) {
 		this.price = price;
+		return this;
 	}
 
 	/* (non-Javadoc)
