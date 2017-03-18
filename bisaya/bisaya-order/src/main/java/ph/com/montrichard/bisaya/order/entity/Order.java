@@ -20,7 +20,7 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	
 	private Integer quantity;
 	
-	private BigDecimal totalPricate;
+	private BigDecimal totalPrice;
 	
 	private String status;
 	
@@ -69,15 +69,15 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	/**
 	 * @return the totalPricate
 	 */
-	public BigDecimal getTotalPricate() {
-		return totalPricate;
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
 	}
 
 	/**
 	 * @param totalPricate the totalPricate to set
 	 */
-	public void setTotalPricate(BigDecimal totalPricate) {
-		this.totalPricate = totalPricate;
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	/**

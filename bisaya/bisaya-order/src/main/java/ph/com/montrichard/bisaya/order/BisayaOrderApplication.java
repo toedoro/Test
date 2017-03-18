@@ -13,7 +13,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 public class BisayaOrderApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(BisayaOrderApplication.class, args);
 	}

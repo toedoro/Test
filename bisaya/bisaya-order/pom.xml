@@ -22,11 +22,13 @@
 	</properties>
 
 	<dependencies>
+		<!--
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>bisaya-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -62,6 +64,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-commons-core -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons-core</artifactId>
+			<version>1.1.0.RELEASE</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
