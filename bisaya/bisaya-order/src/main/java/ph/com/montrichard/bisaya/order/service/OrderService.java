@@ -5,6 +5,7 @@ package ph.com.montrichard.bisaya.order.service;
 
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,18 +30,22 @@ public class OrderService {
 	
 	public Order create( Order order ){
 		Integer size = orders.size();
-		String orderNo = String.format("ORDER000", size+1);
+		String orderNo = String.format("ORDER000%s", size+1);
 		BigInteger id = new BigInteger( new String(size+1+"") );
 		order.setId(id);
+		order.setCreatedDate(new Date());
 		order.setOrderNo(orderNo);
-		order.setStatus("PENDING");
+		order.setStatus("Waiting For Confirmation");
 		orders.add( order );
 		
 		return order;
 	}
 	
 	public Order update( Order order ){
-		orders.add( order );
+		if( !orders.add( order ) ){
+			orders.remove( order );
+			orders.add( order );
+		}
 		return order;
 	}
 	

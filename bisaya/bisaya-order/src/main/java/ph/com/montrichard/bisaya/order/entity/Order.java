@@ -4,6 +4,7 @@
 package ph.com.montrichard.bisaya.order.entity;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Mar 17, 2017 3:13:14 PM
@@ -93,6 +94,31 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	@Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(getId());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Order other = (Order) obj;
+        if (!Objects.equals(getId(), other.getId())) {
+            return false;
+        }
+        return true;
+    } 
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)

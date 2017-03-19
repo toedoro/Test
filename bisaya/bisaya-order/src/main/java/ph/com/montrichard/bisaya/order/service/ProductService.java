@@ -4,7 +4,6 @@
 package ph.com.montrichard.bisaya.order.service;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +31,11 @@ public class ProductService {
 				.setDescription("LAPTOP")
 				.setPrice( new BigDecimal("1000.00")) );
 	}};
+	
+	public Product create( Product product ){
+		products.add(product);
+		return product;
+	}
 	
 	public Collection<Product> read( Integer offSet, Integer limit ){
 		return products;
