@@ -31,8 +31,8 @@
 		<module>bisaya-order</module>
 		<module>bisaya-production</module>
 		<module>bisaya-gateway</module>
-    <module>bisaya-common</module>
-  </modules>
+		<module>bisaya-common</module>
+	</modules>
 	
 	<dependencyManagement>
 		<dependencies>
