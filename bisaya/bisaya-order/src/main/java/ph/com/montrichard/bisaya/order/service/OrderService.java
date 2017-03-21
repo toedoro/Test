@@ -11,7 +11,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import ph.com.montrichard.bisaya.order.entity.Order;
+import ph.com.montrichard.bisaya.order.entity.Orders;
 
 /**
  * Mar 18, 2017 10:06:11 PM
@@ -21,14 +21,14 @@ import ph.com.montrichard.bisaya.order.entity.Order;
 @Service
 public class OrderService {
 	
-	Set<Order> orders = new HashSet<>();
+	Set<Orders> orders = new HashSet<>();
 	
-	public Collection<Order> read( Integer offSet, Integer limit ){
+	public Collection<Orders> read( Integer offSet, Integer limit ){
 //		return orders.subList(offSet, limit);
 		return orders;
 	}
 	
-	public Order create( Order order ){
+	public Orders create( Orders order ){
 		Integer size = orders.size();
 		String orderNo = String.format("ORDER000%s", size+1);
 		BigInteger id = new BigInteger( new String(size+1+"") );
@@ -41,7 +41,7 @@ public class OrderService {
 		return order;
 	}
 	
-	public Order update( Order order ){
+	public Orders update( Orders order ){
 		if( !orders.add( order ) ){
 			orders.remove( order );
 			orders.add( order );

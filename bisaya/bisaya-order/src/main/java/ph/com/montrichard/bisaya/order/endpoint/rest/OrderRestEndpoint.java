@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ph.com.montrichard.bisaya.order.entity.Order;
+import ph.com.montrichard.bisaya.order.entity.Orders;
 import ph.com.montrichard.bisaya.order.service.OrderService;
 
 /**
@@ -35,12 +35,12 @@ public class OrderRestEndpoint {
 	private OrderService orderService;
 	
 	@PostMapping
-	public Order create( @RequestBody Order order ){
+	public Orders create( @RequestBody Orders order ){
 		return orderService.create(order);
 	}
 	
 	@GetMapping
-	public Collection<Order> read( @RequestParam Map<String,String> param ){
+	public Collection<Orders> read( @RequestParam Map<String,String> param ){
 		Integer offSet = Integer.parseInt(param.get("pageNo"));
 		Integer limit = Integer.parseInt(param.get("pageSize"));
 		
@@ -48,7 +48,7 @@ public class OrderRestEndpoint {
 	}
 	
 	@PutMapping
-	public Order update( @RequestBody Order order ){
+	public Orders update( @RequestBody Orders order ){
 		return orderService.update(order);
 	}
 	

@@ -7,34 +7,40 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 /**
  * Mar 17, 2017 3:13:59 PM
  * 
  * @version 1.0
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public class BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 2534062868934532654L;
 	
-	private BigInteger id;
-	
+	@CreatedDate
+    @Column(name = "creation_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
 	private Date createdDate;
-
-	/**
-	 * @return the id
-	 */
-	public BigInteger getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(BigInteger id) {
-		this.id = id;
-	}
-
+	
+	@CreatedBy
+    @Column(name = "created_by", length = 50, nullable = false)
+    @NotNull
+    private String createdBy;
+	
 	/**
 	 * @return the createdDate
 	 */
@@ -47,6 +53,20 @@ public class BaseEntity implements Serializable {
 	 */
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	/**
+	 * @return the createdBy
+	 */
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	/**
+	 * @param createdBy the createdBy to set
+	 */
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 	
 }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ph.com.montrichard.bisaya.order.entity.Product;
+import ph.com.montrichard.bisaya.order.entity.Products;
 import ph.com.montrichard.bisaya.order.service.ProductService;
 
 /**
@@ -34,12 +34,12 @@ public class ProductRestEndpoint {
 	private ProductService productService;
 	
 	@PostMapping
-	public Product create( @RequestBody Product product ){
+	public Products create( @RequestBody Products product ){
 		return productService.create(product);
 	}
 	
 	@GetMapping
-	public Collection<Product> read( @RequestParam Map<String,String> param ){
+	public Collection<Products> read( @RequestParam Map<String,String> param ){
 		Integer offSet = Integer.parseInt(param.get("pageNo"));
 		Integer limit = Integer.parseInt(param.get("pageSize"));
 		

@@ -4,7 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>bisaya-registry</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>bisaya-registry</name>
@@ -14,7 +13,6 @@
 		<groupId>ph.com.montrichard.bisaya</groupId>
 		<artifactId>bisaya</artifactId>
 		<version>1.0</version>
-		<relativePath>..</relativePath> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>

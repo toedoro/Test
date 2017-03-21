@@ -4,20 +4,45 @@
 package ph.com.montrichard.bisaya.order.entity;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 /**
  * Mar 17, 2017 3:13:14 PM
  * @version 1.0
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
-public class Order extends BaseEntity implements Comparable<Order>{
+@Entity
+@Table(name="orders")
+public class Orders extends BaseEntity implements Comparable<Orders>{
 	
 	private static final long serialVersionUID = 1175193853992665462L;
-
+	
+	@Id
+    @Column(name = "id", unique = true)
+    @TableGenerator(initialValue = 1,
+            name = "orders_id_generator", pkColumnName = "table_name",
+            pkColumnValue = "orders", table = "id_generator", valueColumnName = "id")
+    @GeneratedValue(generator = "orders_id_generator", strategy = GenerationType.TABLE)
+    private BigInteger id;
+	
 	private String orderNo;
 	
-	private Product product;
+	@JoinTable(name = "orders_products")
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private Set<Products> products;
 	
 	private Integer quantity;
 	
@@ -25,6 +50,20 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	
 	private String status;
 	
+	/**
+	 * @return the id
+	 */
+	public BigInteger getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
 	/**
 	 * @return the orderNo
 	 */
@@ -40,17 +79,17 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	}
 
 	/**
-	 * @return the product
+	 * @return the products
 	 */
-	public Product getProduct() {
-		return product;
+	public Set<Products> getProducts() {
+		return products;
 	}
 
 	/**
-	 * @param product the product to set
+	 * @param products the products to set
 	 */
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProducts(Set<Products> products) {
+		this.products = products;
 	}
 
 	/**
@@ -113,7 +152,7 @@ public class Order extends BaseEntity implements Comparable<Order>{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Order other = (Order) obj;
+        final Orders other = (Orders) obj;
         if (!Objects.equals(getId(), other.getId())) {
             return false;
         }
@@ -124,9 +163,19 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(Order o) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Orders o) {
+		return toString().compareTo(o.toString());
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Order [orderNo=" + orderNo + ", product=" + products + ", quantity=" + quantity + ", totalPrice="
+				+ totalPrice + ", status=" + status + ", id=" + id + "]";
+	}
+	
+	
 	
 }
