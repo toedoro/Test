@@ -3,6 +3,8 @@
  */
 package ph.com.montrichard.bisaya.service;
 
+import java.util.Collection;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.domain.Page;
@@ -17,6 +19,8 @@ public interface IService<T, ID> {
 	public T create(@NotNull T type);
 	
 	public Page<T> read(Integer offSet, Integer limit);
+	
+	public Collection<T> read();
 	
 	public T read(@NotNull ID id);
 	

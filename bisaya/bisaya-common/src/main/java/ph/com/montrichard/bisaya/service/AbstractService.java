@@ -4,6 +4,7 @@
 package ph.com.montrichard.bisaya.service;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.validation.constraints.NotNull;
 
@@ -38,7 +39,12 @@ public abstract class AbstractService<T, ID extends Serializable> implements ISe
 			throw new IllegalStateException(ex.getMessage(), ex);
 		}
 	}
-
+	
+	@Override
+	public Collection<T> read() {
+		return getRepository().findAll();
+	}
+	
 	@Override
 	public Page<T> read(Integer offSet, Integer limit) {
 		return getRepository().findAll( pageable(offSet, limit) );

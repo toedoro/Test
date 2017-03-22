@@ -14,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -59,7 +60,10 @@ public class BaseEntity implements Serializable {
 	 * @return the createdBy
 	 */
 	public String getCreatedBy() {
-		return createdBy;
+		if(StringUtils.isEmpty(createdBy)) {
+            createdBy = "ADMIN";
+        }
+        return createdBy;
 	}
 
 	/**

@@ -40,11 +40,23 @@ public class OrderService extends AbstractService<Orders, BigInteger> implements
 		
 		order.setOrderNo(orderNo);
 		order.setStatus("Waiting For Confirmation");
-		
 		super.create(order);
 		
 		return order;
 	}
+
+	/* (non-Javadoc)
+	 * @see ph.com.montrichard.bisaya.order.service.IOrderService#updateOrderStatus(java.lang.String, java.math.BigInteger)
+	 */
+	@Override
+	public Orders updateOrderStatus(BigInteger id, String status) {
+		orderRepository.updateOrderStatus(status, id);
+		Orders order = super.read(id);
+		
+		return order;
+	}
+	
+	
 	
 	
 }
