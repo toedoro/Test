@@ -5,7 +5,7 @@ package ph.com.montrichard.bisaya.order.service;
 
 import java.math.BigInteger;
 
-import ph.com.montrichard.bisaya.order.entity.Orders;
+import ph.com.montrichard.bisaya.order.entity.Order;
 import ph.com.montrichard.bisaya.service.IService;
 
 /**
@@ -14,8 +14,8 @@ import ph.com.montrichard.bisaya.service.IService;
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
 
-public interface IOrderService extends IService<Orders, BigInteger>{
+public interface IOrderService extends IService<Order, BigInteger>{
 	
-	Orders updateOrderStatus(BigInteger id, String status);
+	Order updateOrderStatus(BigInteger id, String status);
 	
 }

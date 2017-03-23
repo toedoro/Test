@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ph.com.montrichard.bisaya.order.entity.Orders;
+import ph.com.montrichard.bisaya.order.entity.Order;
 import ph.com.montrichard.bisaya.order.service.OrderService;
 
 /**
@@ -29,7 +29,7 @@ import ph.com.montrichard.bisaya.order.service.OrderService;
  */
 @RefreshScope
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:8888")
+@CrossOrigin(origins = "*")
 @RequestMapping(path="/api",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 public class OrderRestEndpoint {
 	
@@ -37,23 +37,23 @@ public class OrderRestEndpoint {
 	private OrderService orderService;
 	
 	@PostMapping
-	public Orders create( @RequestBody Orders order ){
+	public Order create( @RequestBody Order order ){
 		return orderService.create(order);
 	}
 	
 	@GetMapping
-	public Collection<Orders> read(){
+	public Collection<Order> read(){
 
 		return orderService.read();
 	}
 	
 	@PutMapping
-	public Orders update( @RequestBody Orders order ){
+	public Order update( @RequestBody Order order ){
 		return orderService.update(order);
 	}
 	
 	@PutMapping("/id/{id}/status/{status}")
-	public Orders updateStatus( @PathVariable BigInteger id, @PathVariable String status ){
+	public Order updateStatus( @PathVariable BigInteger id, @PathVariable String status ){
 		return orderService.updateOrderStatus(id, status);
 	}
 	

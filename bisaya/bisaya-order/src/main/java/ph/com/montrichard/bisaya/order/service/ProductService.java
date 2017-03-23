@@ -3,14 +3,13 @@
  */
 package ph.com.montrichard.bisaya.order.service;
 
-import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.math.BigInteger;
 
 import org.springframework.stereotype.Service;
 
-import ph.com.montrichard.bisaya.order.entity.Products;
+import ph.com.montrichard.bisaya.order.entity.Product;
+import ph.com.montrichard.bisaya.repository.IRepository;
+import ph.com.montrichard.bisaya.service.AbstractService;
 
 /**
  * Mar 19, 2017 12:39:12 AM
@@ -18,27 +17,20 @@ import ph.com.montrichard.bisaya.order.entity.Products;
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
 @Service
-public class ProductService {
+public class ProductService extends AbstractService<Product, BigInteger> implements IProductService{
 	
-	Set<Products> products = new HashSet<Products>(){{
-		add( new Products()
-				.setTitle("Ball Pen")
-				.setDescription("BALLPEN")
-				.setPrice( new BigDecimal("100.00")) );
-		
-		add( new Products()
-				.setTitle("Laptop")
-				.setDescription("LAPTOP")
-				.setPrice( new BigDecimal("1000.00")) );
-	}};
 	
-	public Products create( Products product ){
-		products.add(product);
+	@Override
+	protected IRepository<Product, BigInteger> getRepository() {
+		return null;
+	}
+
+	@Override
+	public Product create( Product product ){
+		product.setCreatedBy("ADMIN");
+		super.create(product);
 		return product;
 	}
-	
-	public Collection<Products> read( Integer offSet, Integer limit ){
-		return products;
-	}
+
 	
 }

@@ -7,7 +7,7 @@ import java.math.BigInteger;
 
 import org.springframework.stereotype.Repository;
 
-import ph.com.montrichard.bisaya.order.entity.Orders;
+import ph.com.montrichard.bisaya.order.entity.Order;
 import ph.com.montrichard.bisaya.repository.IRepository;
 
 /**
@@ -16,7 +16,7 @@ import ph.com.montrichard.bisaya.repository.IRepository;
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
 @Repository
-public interface IOrderRepository extends IRepository<Orders, BigInteger>{
+public interface IOrderRepository extends IRepository<Order, BigInteger>{
 	
 //	@Modifying
 //	@Transactional

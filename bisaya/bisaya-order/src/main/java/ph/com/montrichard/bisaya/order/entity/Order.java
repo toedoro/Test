@@ -19,7 +19,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -29,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="orders")
-public class Orders extends BaseEntity implements Comparable<Orders>{
+public class Order extends BaseEntity implements Comparable<Order>{
 	
 	private static final long serialVersionUID = 1175193853992665462L;
 	
@@ -43,9 +42,9 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 	
 	private String orderNo;
 	
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "product_id")
-	private Products product;
+    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL )
+	@JoinColumn(name = "product_id", insertable = false, updatable = false)
+	private Product product;
 	
 	private Integer quantity;
 	
@@ -85,14 +84,14 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 	/**
 	 * @return the product
 	 */
-	public Products getProduct() {
+	public Product getProduct() {
 		return product;
 	}
 
 	/**
 	 * @param product the product to set
 	 */
-	public void setProduct(Products product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 
@@ -156,7 +155,7 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Orders other = (Orders) obj;
+        final Order other = (Order) obj;
         if (!Objects.equals(getId(), other.getId())) {
             return false;
         }
@@ -167,7 +166,7 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
-	public int compareTo(Orders o) {
+	public int compareTo(Order o) {
 		return toString().compareTo(o.toString());
 	}
 
@@ -179,7 +178,5 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 		return "Order [orderNo=" + orderNo + ", product=" + product + ", quantity=" + quantity + ", totalPrice="
 				+ totalPrice + ", status=" + status + ", id=" + id + "]";
 	}
-	
-	
 	
 }

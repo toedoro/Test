@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import ph.com.montrichard.bisaya.order.entity.Orders;
+import ph.com.montrichard.bisaya.order.entity.Order;
 import ph.com.montrichard.bisaya.order.repository.IOrderRepository;
 import ph.com.montrichard.bisaya.repository.IRepository;
 import ph.com.montrichard.bisaya.service.AbstractService;
@@ -20,7 +20,7 @@ import ph.com.montrichard.bisaya.service.AbstractService;
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
 @Service
-public class OrderService extends AbstractService<Orders, BigInteger> implements IOrderService{
+public class OrderService extends AbstractService<Order, BigInteger> implements IOrderService{
 	
 	@Inject
 	private IOrderRepository orderRepository;
@@ -29,12 +29,12 @@ public class OrderService extends AbstractService<Orders, BigInteger> implements
 	 * @see ph.com.montrichard.bisaya.service.AbstractService#getRepository()
 	 */
 	@Override
-	protected IRepository<Orders, BigInteger> getRepository() {
+	protected IRepository<Order, BigInteger> getRepository() {
 		return orderRepository;
 	}
 	
 	@Override
-	public Orders create( Orders order ){
+	public Order create( Order order ){
 		Long size = orderRepository.count();
 		String orderNo = String.format("ORDER000%s", size+1);
 		
@@ -50,9 +50,9 @@ public class OrderService extends AbstractService<Orders, BigInteger> implements
 	 * @see ph.com.montrichard.bisaya.order.service.IOrderService#updateOrderStatus(java.lang.String, java.math.BigInteger)
 	 */
 	@Override
-	public Orders updateOrderStatus(BigInteger id, String status) {
+	public Order updateOrderStatus(BigInteger id, String status) {
 //		orderRepository.updateOrderStatus(status, id);
-		Orders order = super.read(id);
+		Order order = super.read(id);
 		
 		return order;
 	}
