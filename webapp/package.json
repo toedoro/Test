@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -c-1 -p 9000"
+    "start": "http-server -c-1 -p 8888"
   },
   "author": "teodoro dela Cerna jr",
   "license": "ISC",

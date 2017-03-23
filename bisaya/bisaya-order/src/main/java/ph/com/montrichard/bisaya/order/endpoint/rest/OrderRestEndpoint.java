@@ -3,14 +3,17 @@
  */
 package ph.com.montrichard.bisaya.order.endpoint.rest;
 
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,13 +46,19 @@ public class OrderRestEndpoint {
 	public Collection<Orders> read( @RequestParam Map<String,String> param ){
 		Integer offSet = Integer.parseInt(param.get("pageNo"));
 		Integer limit = Integer.parseInt(param.get("pageSize"));
+		Page<Orders> orders = orderService.read(offSet, limit);
 		
-		return orderService.read(offSet, limit);
+		return orders.getContent();
 	}
 	
 	@PutMapping
 	public Orders update( @RequestBody Orders order ){
 		return orderService.update(order);
+	}
+	
+	@PutMapping("/id/{id}/status/{status}")
+	public Orders updateStatus( @PathVariable BigInteger id, @PathVariable String status ){
+		return orderService.updateOrderStatus(id, status);
 	}
 	
 }

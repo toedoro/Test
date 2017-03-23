@@ -43,10 +43,6 @@ public class Products extends BaseEntity implements Comparable<Products>{
 	
 	private BigDecimal price;
 	
-	@JsonIgnore
-    @ManyToMany(mappedBy = "products")
-    private Set<Orders> orders;
-
 	/**
 	 * @return the title
 	 */
@@ -92,20 +88,6 @@ public class Products extends BaseEntity implements Comparable<Products>{
 		return this;
 	}
 	
-	/**
-	 * @return the orders
-	 */
-	public Set<Orders> getOrders() {
-		return orders;
-	}
-
-	/**
-	 * @param orders the orders to set
-	 */
-	public void setOrders(Set<Orders> orders) {
-		this.orders = orders;
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */

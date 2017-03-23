@@ -16,4 +16,6 @@ import ph.com.montrichard.bisaya.service.IService;
 
 public interface IOrderService extends IService<Orders, BigInteger>{
 	
+	Orders updateOrderStatus(BigInteger id, String status);
+	
 }

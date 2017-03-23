@@ -6,18 +6,21 @@ package ph.com.montrichard.bisaya.order.entity;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Mar 17, 2017 3:13:14 PM
@@ -40,9 +43,9 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 	
 	private String orderNo;
 	
-	@JoinTable(name = "orders_products")
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private Set<Products> products;
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "product_id")
+	private Products product;
 	
 	private Integer quantity;
 	
@@ -78,18 +81,19 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 		this.orderNo = orderNo;
 	}
 
+
 	/**
-	 * @return the products
+	 * @return the product
 	 */
-	public Set<Products> getProducts() {
-		return products;
+	public Products getProduct() {
+		return product;
 	}
 
 	/**
-	 * @param products the products to set
+	 * @param product the product to set
 	 */
-	public void setProducts(Set<Products> products) {
-		this.products = products;
+	public void setProduct(Products product) {
+		this.product = product;
 	}
 
 	/**
@@ -172,7 +176,7 @@ public class Orders extends BaseEntity implements Comparable<Orders>{
 	 */
 	@Override
 	public String toString() {
-		return "Order [orderNo=" + orderNo + ", product=" + products + ", quantity=" + quantity + ", totalPrice="
+		return "Order [orderNo=" + orderNo + ", product=" + product + ", quantity=" + quantity + ", totalPrice="
 				+ totalPrice + ", status=" + status + ", id=" + id + "]";
 	}
 	
