@@ -1,9 +1,14 @@
 var app = angular.module('app',[ 'ngRoute' ]);
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
+	$locationProvider.hashPrefix('');
+	
     $routeProvider
 		.when("/order", {
-			templateUrl : "order.htm"
+			templateUrl : "components/order/order.html",
+			controller : "orderController",
+			title : "Order Service"
 		}).when("/production", {
-			templateUrl : "production.htm"
+			templateUrl : "components/production/production.html"
 		});
+		
 });

@@ -11,12 +11,31 @@
 		<link href="assets/libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-	<div ng-view></div>
+		<div class="page-header">
+			<h1>Navs</h1>
+		</div>
+
+		<ul class="nav nav-pills" role="tablist">
+			<li role="presentation" class="active"><a href="#">Home</a></li>
+			<li role="presentation"><a href="#order">Order</a></li>
+			<li role="presentation"><a href="#production">Production</a></li>
+		</ul>
+		
+		<div ng-view></div>
+		
+		<script src="assets/libs/angular/angular.js"></script>
+		<script src="assets/libs/angular-route/angular-route.min.js"></script>
+		<script src="app.module.js"></script>
+		<script src="components/order/order-controller.js"></script>
+		<script src="components/order/order-service.js"></script>
+		
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+		
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
 	
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-	
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+		
 	</body>
 </html>

@@ -7,7 +7,7 @@
 
 	function orderController( $scope, orderService ){
 	
-	
+		console.log('order-controller');
 	
 	}
 	
