@@ -9,68 +9,19 @@
 					<th>Order No.</th>
 					<th>Product</th>
 					<th>Quantity</th>
+					<th>Total Price</th>
 					<th>Production Start</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>ORDER0001</td>
-					<td>Laptop</td>
-					<td>1</td>
-					<td>today</td>
+				<tr ng-repeat="order in orders" >
+					<td>{{order.orderNo}}</td>
+					<td>{{order.product.title}}</td>
+					<td>{{order.quantity}}</td>
+					<td>{{order.totalPrice}}</td>
+					<td>{{order.productionStartDate}}</td>
 				</tr>
-				<tr>
-					<td>ORDER0001</td>
-					<td>Laptop</td>
-					<td>1</td>
-					<td>today</td>
-				</tr>
-				<tr>
-					<td>ORDER0001</td>
-					<td>Laptop</td>
-					<td>1</td>
-					<td>today</td>
-				</tr>
-			
 			</tbody>
 		</table>
 	</div>
-		<div class="col-md-6">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Order No.</th>
-						<th>Product</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Production Start</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>ORDER0001</td>
-						<td>Laptop</td>
-						<td>1</td>
-						<td>today</td>
-						<td>Waiting for Confirmation</td>
-					</tr>
-					<tr>
-						<td>ORDER0001</td>
-						<td>Laptop</td>
-						<td>1</td>
-						<td>today</td>
-						<td>Waiting for Confirmation</td>
-					</tr>
-					<tr>
-						<td>ORDER0001</td>
-						<td>Laptop</td>
-						<td>1</td>
-						<td>today</td>
-						<td>Waiting for Confirmation</td>
-					</tr>
-					
-				</tbody>
-			</table>
-		</div>
-	</div>
+</div>

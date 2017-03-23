@@ -6,8 +6,16 @@
 	orderController.$inject = ['$scope', 'orderService'];
 
 	function orderController( $scope, orderService ){
-	
-		console.log('order-controller');
+		
+		$scope.orders = [];
+		
+		var getOrders = function(){
+			orderService.getOrders().then(function( result ){
+				$scope.orders = result;
+			});
+		}
+		
+		getOrders();
 	
 	}
 	

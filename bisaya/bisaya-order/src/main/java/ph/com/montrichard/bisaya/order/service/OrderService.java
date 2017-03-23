@@ -38,6 +38,7 @@ public class OrderService extends AbstractService<Orders, BigInteger> implements
 		Long size = orderRepository.count();
 		String orderNo = String.format("ORDER000%s", size+1);
 		
+		order.setCreatedBy("ADMIN");
 		order.setOrderNo(orderNo);
 		order.setStatus("Waiting For Confirmation");
 		super.create(order);
@@ -50,7 +51,7 @@ public class OrderService extends AbstractService<Orders, BigInteger> implements
 	 */
 	@Override
 	public Orders updateOrderStatus(BigInteger id, String status) {
-		orderRepository.updateOrderStatus(status, id);
+//		orderRepository.updateOrderStatus(status, id);
 		Orders order = super.read(id);
 		
 		return order;
