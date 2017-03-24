@@ -7,8 +7,8 @@
 		return {
 			schedule: function( order ){
 				var productionStartDate = new Date(order.productionStartDate);
-				
 				order.productionStartDate = productionStartDate;
+				
 				return $http.post(url, order);
 			}, getOrders: function(){
 				var configuration = {

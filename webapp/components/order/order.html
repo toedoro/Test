@@ -50,29 +50,27 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="inputEmail3">Product</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" ng-model="order.product.id" placeholder="Product No."/>
-							<!--
-							<select ng-model="order.product">
-								<option ng-repeat="product in products" value="{{ product.id }}">{{ product.title }}</option>
+							<select ng-model="order.product" >
+								<option selected value="0"> SELECT PRODUCT </option>
+								<option ng-repeat="product in products" value="{{product}}">{{ product.title }}</option>
 							</select>
+							
 							<span ng-if="order.product">
-								<label class="col-sm-2 control-label">Product: </label> {{order.product.title}}
-								<label class="col-sm-2 control-label">Description: </label> {{order.product.description}}
-								<label class="col-sm-2 control-label">Price: </label> {{order.product.price}}
+								<input type="text" class="form-control" readonly ng-model="resolve(order.product).title" readonly placeholder="title"/><br/>
+								<input type="text" class="form-control" readonly ng-model="resolve(order.product).price" readonly placeholder="price"/><br/>
 							</span>
-							-->
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="quantity" >Quantity</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" ng-blur="order.totalPrice = order.quantity * order.product.price" ng-model="order.quantity" placeholder="Quantity"/>
+							<input type="text" class="form-control" ng-blur="order.totalPrice = order.quantity * resolve(order.product).price" ng-model="order.quantity" placeholder="Quantity"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Total Price</label> 
 						<div class="col-sm-10">
-							<input type="text" class="form-control" ng-model="order.totalPrice" readonly placeholder="Total Price"/>
+							<input type="text" class="form-control" ng-model="order.totalPrice" placeholder="Total Price"/>
 						</div>
 					</div>
 					<div class="form-group">
