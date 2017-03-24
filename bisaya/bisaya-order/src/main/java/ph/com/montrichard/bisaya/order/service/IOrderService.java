@@ -18,4 +18,6 @@ public interface IOrderService extends IService<Order, BigInteger>{
 	
 	Order updateOrderStatus(BigInteger id, String status);
 	
+	Order findByOrderNo(String orderNo );
+	
 }

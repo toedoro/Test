@@ -4,6 +4,9 @@
 package ph.com.montrichard.bisaya.dto;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * Mar 17, 2017 3:13:14 PM
@@ -12,18 +15,36 @@ import java.math.BigDecimal;
  */
 public class OrderDto extends BaseEntity implements Comparable<OrderDto>{
 	
-	private static final long serialVersionUID = 1175193853992665462L;
+	private static final long serialVersionUID = 1L;
 
+	private BigInteger id;
+	
 	private String orderNo;
 	
 	private ProductDto product;
 	
 	private Integer quantity;
 	
-	private BigDecimal totalPricate;
+	private BigDecimal totalPrice;
+	
+	private Date productionStartDate;
 	
 	private String status;
 	
+	/**
+	 * @return the id
+	 */
+	public BigInteger getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(BigInteger id) {
+		this.id = id;
+	}
+
 	/**
 	 * @return the orderNo
 	 */
@@ -37,6 +58,7 @@ public class OrderDto extends BaseEntity implements Comparable<OrderDto>{
 	public void setOrderNo(String orderNo) {
 		this.orderNo = orderNo;
 	}
+
 
 	/**
 	 * @return the product
@@ -69,17 +91,31 @@ public class OrderDto extends BaseEntity implements Comparable<OrderDto>{
 	/**
 	 * @return the totalPricate
 	 */
-	public BigDecimal getTotalPricate() {
-		return totalPricate;
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
 	}
 
 	/**
 	 * @param totalPricate the totalPricate to set
 	 */
-	public void setTotalPricate(BigDecimal totalPricate) {
-		this.totalPricate = totalPricate;
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
+	/**
+	 * @return the productionStartDate
+	 */
+	public Date getProductionStartDate() {
+		return productionStartDate;
+	}
+
+	/**
+	 * @param productionStartDate the productionStartDate to set
+	 */
+	public void setProductionStartDate(Date productionStartDate) {
+		this.productionStartDate = productionStartDate;
+	}
+
 	/**
 	 * @return the status
 	 */
@@ -94,13 +130,37 @@ public class OrderDto extends BaseEntity implements Comparable<OrderDto>{
 		this.status = status;
 	}
 	
+	@Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(getId());
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final OrderDto other = (OrderDto) obj;
+        if (!Objects.equals(getId(), other.getId())) {
+            return false;
+        }
+        return true;
+    } 
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	@Override
 	public int compareTo(OrderDto o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return toString().compareTo(o.toString());
 	}
 	
 }

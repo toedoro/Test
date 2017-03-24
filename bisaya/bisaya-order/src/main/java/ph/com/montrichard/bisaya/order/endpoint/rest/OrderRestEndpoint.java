@@ -47,6 +47,12 @@ public class OrderRestEndpoint {
 		return orderService.read();
 	}
 	
+	@GetMapping("/orderNo/{orderNo}")
+	public Order findByOrderNo( @PathVariable String orderNo ){
+
+		return orderService.findByOrderNo(orderNo);
+	}
+	
 	@PutMapping
 	public Order update( @RequestBody Order order ){
 		return orderService.update(order);

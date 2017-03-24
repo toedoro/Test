@@ -59,6 +59,11 @@ public class OrderService extends AbstractService<Order, BigInteger> implements 
 		
 		return order;
 	}
+
+	@Override
+	public Order findByOrderNo(String orderNo) {
+		return orderRepository.findByOrderNo(orderNo);
+	}
 	
 	
 	

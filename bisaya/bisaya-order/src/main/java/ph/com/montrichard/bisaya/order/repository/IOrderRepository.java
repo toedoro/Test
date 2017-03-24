@@ -18,4 +18,6 @@ import ph.com.montrichard.bisaya.repository.IRepository;
 @Repository
 public interface IOrderRepository extends IRepository<Order, BigInteger>{
 	
+	
+	Order findByOrderNo(String orderNo );
 }

@@ -47,6 +47,15 @@ public class ProductionService extends AbstractService<Production, BigInteger> i
 		return orders;
 	}
 	
+	public OrderDto getOrderByNo(String orderNo){
+		
+		String uri = String.format("orderNo/%s",orderNo);
+		String url = String.format("http://%s/order/api/%s", Constants.ORDER_SERVICE, uri);
+		OrderDto order = restTemplate.getForObject(url, OrderDto.class);
+		
+		return order;
+	}	
+	
 	public OrderDto update( OrderDto order ){
 		String url = String.format("http://%s/order/api", Constants.ORDER_SERVICE);
 		restTemplate.put(url, order);

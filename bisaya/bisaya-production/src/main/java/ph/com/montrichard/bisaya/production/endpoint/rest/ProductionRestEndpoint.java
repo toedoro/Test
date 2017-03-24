@@ -11,6 +11,7 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,6 +45,9 @@ public class ProductionRestEndpoint {
 		return productionService.getOrders();
 	}
 	
-	
+	@GetMapping("/order/orderNo/{orderNo}")
+	public OrderDto getOrderByNo(@PathVariable String orderNo){
+		return productionService.getOrderByNo(orderNo);
+	}
 	
 }
