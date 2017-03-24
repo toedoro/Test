@@ -8,6 +8,15 @@
 	function orderController( $scope, orderService ){
 		
 		$scope.orders = [];
+		$scope.products = [];
+		$scope.order = {};
+		
+		
+		var getProducts = function(){
+			orderService.getProducts().then(function( result ){
+				$scope.products = result;
+			});
+		}
 		
 		var getOrders = function(){
 			orderService.getOrders().then(function( result ){
@@ -16,7 +25,14 @@
 		}
 		
 		getOrders();
-	
+		
+		$scope.schedule = function(){
+			orderService.schedule( $scope.order ).then(function( result ){
+				
+				getOrders();
+			});
+		}
+		
 	}
 	
 })();

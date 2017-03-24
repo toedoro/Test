@@ -8,7 +8,9 @@ app.config(function($routeProvider, $locationProvider) {
 			controller : "orderController",
 			title : "Order Service"
 		}).when("/production", {
-			templateUrl : "components/production/production.html"
+			templateUrl : "components/production/production.html",
+			controller : "productionController",
+			title : "Production Service"
 		});
 		
 });
