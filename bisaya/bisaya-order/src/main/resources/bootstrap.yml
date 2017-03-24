@@ -1,4 +1,3 @@
-
 spring:
     application:
         name: bisaya-order
@@ -6,21 +5,4 @@ spring:
         config:
             uri: http://127.0.0.1:9000/config
             
----
-spring:
-    profiles: development
-    application:
-        name: bisaya-order
-    
----
-spring:
-    profiles: integration
-    application:
-        name: bisaya-order
-
-
----
-spring:
-    profiles:
-        active: development, integration
-  
+ 

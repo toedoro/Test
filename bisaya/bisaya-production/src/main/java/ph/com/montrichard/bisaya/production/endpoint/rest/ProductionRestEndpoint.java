@@ -4,18 +4,18 @@
 package ph.com.montrichard.bisaya.production.endpoint.rest;
 
 import java.util.Collection;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ph.com.montrichard.bisaya.dto.OrderDto;
+import ph.com.montrichard.bisaya.production.entity.Production;
 import ph.com.montrichard.bisaya.production.service.ProductionService;
 
 /**
@@ -25,6 +25,7 @@ import ph.com.montrichard.bisaya.production.service.ProductionService;
  */
 @RefreshScope
 @RestController
+@CrossOrigin(origins = "*") // "127.0.0.0:8888"
 @RequestMapping(path="/api",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 public class ProductionRestEndpoint {
 	
@@ -32,11 +33,15 @@ public class ProductionRestEndpoint {
 	private ProductionService productionService;
 	
 	@GetMapping
-	public Collection<OrderDto> read( @RequestParam Map<String, String> param ){
-		Integer offSet = Integer.parseInt(param.get("pageNo"));
-		Integer limit = Integer.parseInt(param.get("pageSize"));
+	public Collection<Production> read(){
 		
-		return productionService.read(offSet, limit);
+		return productionService.read();
+	}
+	
+	@GetMapping("/orders")
+	public Collection<OrderDto> getOrders(){
+		
+		return productionService.getOrders();
 	}
 	
 	

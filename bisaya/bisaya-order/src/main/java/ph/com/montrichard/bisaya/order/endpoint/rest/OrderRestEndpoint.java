@@ -29,7 +29,7 @@ import ph.com.montrichard.bisaya.order.service.OrderService;
  */
 @RefreshScope
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*") // "127.0.0.0:8888"
 @RequestMapping(path="/api",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 public class OrderRestEndpoint {
 	

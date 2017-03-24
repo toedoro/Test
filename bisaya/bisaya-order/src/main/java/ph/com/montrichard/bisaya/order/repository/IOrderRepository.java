@@ -18,9 +18,4 @@ import ph.com.montrichard.bisaya.repository.IRepository;
 @Repository
 public interface IOrderRepository extends IRepository<Order, BigInteger>{
 	
-//	@Modifying
-//	@Transactional
-//	@Query("UPDATE orders SET status = ?1 WHERE id = ?2")
-//	int updateOrderStatus( String status, BigInteger id );
-	
 }

@@ -5,21 +5,18 @@ package ph.com.montrichard.bisaya.order.entity;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Mar 17, 2017 3:13:14 PM
@@ -42,13 +39,14 @@ public class Order extends BaseEntity implements Comparable<Order>{
 	
 	private String orderNo;
 	
-    @OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL )
-	@JoinColumn(name = "product_id", insertable = false, updatable = false)
+	@OneToOne(cascade=CascadeType.DETACH) 
 	private Product product;
 	
 	private Integer quantity;
 	
 	private BigDecimal totalPrice;
+	
+	private Date productionStartDate;
 	
 	private String status;
 	
@@ -123,6 +121,20 @@ public class Order extends BaseEntity implements Comparable<Order>{
 		this.totalPrice = totalPrice;
 	}
 	
+	/**
+	 * @return the productionStartDate
+	 */
+	public Date getProductionStartDate() {
+		return productionStartDate;
+	}
+
+	/**
+	 * @param productionStartDate the productionStartDate to set
+	 */
+	public void setProductionStartDate(Date productionStartDate) {
+		this.productionStartDate = productionStartDate;
+	}
+
 	/**
 	 * @return the status
 	 */

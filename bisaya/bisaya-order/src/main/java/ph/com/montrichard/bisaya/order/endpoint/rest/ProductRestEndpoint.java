@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +28,8 @@ import ph.com.montrichard.bisaya.order.service.ProductService;
  */
 @RefreshScope
 @RestController
-@RequestMapping(path="product/api",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+@CrossOrigin(origins = "*") // "127.0.0.0:8888"
+@RequestMapping(path="/product/api",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 public class ProductRestEndpoint {
 	
 	@Inject

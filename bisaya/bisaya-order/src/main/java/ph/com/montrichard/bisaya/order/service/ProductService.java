@@ -5,9 +5,12 @@ package ph.com.montrichard.bisaya.order.service;
 
 import java.math.BigInteger;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 
 import ph.com.montrichard.bisaya.order.entity.Product;
+import ph.com.montrichard.bisaya.order.repository.IProductRepository;
 import ph.com.montrichard.bisaya.repository.IRepository;
 import ph.com.montrichard.bisaya.service.AbstractService;
 
@@ -19,10 +22,12 @@ import ph.com.montrichard.bisaya.service.AbstractService;
 @Service
 public class ProductService extends AbstractService<Product, BigInteger> implements IProductService{
 	
+	@Inject
+	private IProductRepository productRepository;
 	
 	@Override
 	protected IRepository<Product, BigInteger> getRepository() {
-		return null;
+		return productRepository;
 	}
 
 	@Override

@@ -51,8 +51,11 @@ public class OrderService extends AbstractService<Order, BigInteger> implements 
 	 */
 	@Override
 	public Order updateOrderStatus(BigInteger id, String status) {
+		Order order = new Order();
+		order.setId(id);
+		order.setStatus(status);
+		super.update(order);
 //		orderRepository.updateOrderStatus(status, id);
-		Order order = super.read(id);
 		
 		return order;
 	}
