@@ -3,6 +3,7 @@
  */
 package ph.com.montrichard.bisaya.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
@@ -13,9 +14,9 @@ import java.util.Objects;
  * @version 1.0
  * @author © tdelacerna <delacerna_teodoro@yahoo.com>
  */
-public class OrderDto extends BaseEntity implements Comparable<OrderDto>{
+public class OrderDto extends BaseEntity implements Comparable<OrderDto>, Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 7825011483655095465L;
 
 	private BigInteger id;
 	
@@ -161,6 +162,16 @@ public class OrderDto extends BaseEntity implements Comparable<OrderDto>{
 	@Override
 	public int compareTo(OrderDto o) {
 		return toString().compareTo(o.toString());
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "OrderDto [id=" + id + ", orderNo=" + orderNo + ", product=" + product + ", quantity=" + quantity
+				+ ", totalPrice=" + totalPrice + ", productionStartDate=" + productionStartDate + ", status=" + status
+				+ "]";
 	}
 	
 }

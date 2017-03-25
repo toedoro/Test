@@ -4,6 +4,8 @@
 package ph.com.montrichard.bisaya.order.service;
 
 import java.math.BigInteger;
+import java.util.Collection;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -37,7 +39,6 @@ public class OrderService extends AbstractService<Order, BigInteger> implements 
 	public Order create( Order order ){
 		Long size = orderRepository.count();
 		String orderNo = String.format("ORDER000%s", size+1);
-		
 		order.setCreatedBy("ADMIN");
 		order.setOrderNo(orderNo);
 		order.setStatus("Waiting For Confirmation");
@@ -63,6 +64,12 @@ public class OrderService extends AbstractService<Order, BigInteger> implements 
 	@Override
 	public Order findByOrderNo(String orderNo) {
 		return orderRepository.findByOrderNo(orderNo);
+	}
+	
+	@Override
+	public Collection<Order> findByProductionStartDate(Long productionStartDate) {
+		
+		return orderRepository.findByProductionStartDate(new Date(productionStartDate));
 	}
 	
 	

@@ -5,6 +5,7 @@ package ph.com.montrichard.bisaya.order.endpoint.rest;
 
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -51,6 +52,12 @@ public class OrderRestEndpoint {
 	public Order findByOrderNo( @PathVariable String orderNo ){
 
 		return orderService.findByOrderNo(orderNo);
+	}
+	
+	@GetMapping("/productionStartDate/{productionStartDate}")
+	public Collection<Order> findByOrderNo( @PathVariable Long productionStartDate ){
+
+		return orderService.findByProductionStartDate(productionStartDate);
 	}
 	
 	@PutMapping

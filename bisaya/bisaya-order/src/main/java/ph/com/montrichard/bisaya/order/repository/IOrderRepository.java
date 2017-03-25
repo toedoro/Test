@@ -4,6 +4,8 @@
 package ph.com.montrichard.bisaya.order.repository;
 
 import java.math.BigInteger;
+import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +20,8 @@ import ph.com.montrichard.bisaya.repository.IRepository;
 @Repository
 public interface IOrderRepository extends IRepository<Order, BigInteger>{
 	
+	Order findByOrderNo( String orderNo );
 	
-	Order findByOrderNo(String orderNo );
+	Collection<Order> findByProductionStartDate( Date productionStartDate );
+	
 }

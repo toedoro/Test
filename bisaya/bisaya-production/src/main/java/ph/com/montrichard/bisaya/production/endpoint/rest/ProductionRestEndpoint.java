@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,15 +41,26 @@ public class ProductionRestEndpoint {
 		return productionService.read();
 	}
 	
+	@PutMapping("/order")
+	public OrderDto update( @RequestBody OrderDto order ){
+		System.out.println( order );
+		return productionService.update( order );
+	}
+	
 	@GetMapping("/orders")
 	public Collection<OrderDto> getOrders(){
-		
+
 		return productionService.getOrders();
 	}
 	
 	@GetMapping("/order/orderNo/{orderNo}")
 	public OrderDto getOrderByNo(@PathVariable String orderNo){
 		return productionService.getOrderByNo(orderNo);
+	}
+	
+	@GetMapping("/order/productionStartDate/{productionStartDate}")
+	public Collection<OrderDto> getOrderByNo(@PathVariable Long productionStartDate){
+		return productionService.getOrderByProductionStartDate(productionStartDate);
 	}
 	
 }

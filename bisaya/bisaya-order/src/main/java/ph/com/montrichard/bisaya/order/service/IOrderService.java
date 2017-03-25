@@ -4,6 +4,7 @@
 package ph.com.montrichard.bisaya.order.service;
 
 import java.math.BigInteger;
+import java.util.Collection;
 
 import ph.com.montrichard.bisaya.order.entity.Order;
 import ph.com.montrichard.bisaya.service.IService;
@@ -19,5 +20,7 @@ public interface IOrderService extends IService<Order, BigInteger>{
 	Order updateOrderStatus(BigInteger id, String status);
 	
 	Order findByOrderNo(String orderNo );
+	
+	Collection<Order> findByProductionStartDate(Long productionStartDate);
 	
 }

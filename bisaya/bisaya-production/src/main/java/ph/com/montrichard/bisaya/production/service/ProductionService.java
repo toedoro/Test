@@ -5,6 +5,9 @@ package ph.com.montrichard.bisaya.production.service;
 
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.Date;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -40,6 +43,7 @@ public class ProductionService extends AbstractService<Production, BigInteger> i
 		return productionRepository;
 	}
 	
+	@Override
 	public Collection<OrderDto> getOrders(){
 		String url = String.format("http://%s/order/api", Constants.ORDER_SERVICE);
 		Collection<OrderDto> orders = restTemplate.getForObject(url, Collection.class);
@@ -47,17 +51,29 @@ public class ProductionService extends AbstractService<Production, BigInteger> i
 		return orders;
 	}
 	
+	@Override
 	public OrderDto getOrderByNo(String orderNo){
-		
 		String uri = String.format("orderNo/%s",orderNo);
 		String url = String.format("http://%s/order/api/%s", Constants.ORDER_SERVICE, uri);
 		OrderDto order = restTemplate.getForObject(url, OrderDto.class);
 		
 		return order;
-	}	
+	}
 	
+	@Override
+	public Collection<OrderDto> getOrderByProductionStartDate( Long productionStartDate ){
+		String uri = String.format("productionStartDate/%s",productionStartDate);
+		String url = String.format("http://%s/order/api/%s", Constants.ORDER_SERVICE, uri);
+		Collection<OrderDto> orders = restTemplate.getForObject(url, Collection.class);
+		
+		return orders;
+	}
+	
+	@Override
 	public OrderDto update( OrderDto order ){
 		String url = String.format("http://%s/order/api", Constants.ORDER_SERVICE);
+		
+		System.out.println( order );
 		restTemplate.put(url, order);
 		
 		return order;
