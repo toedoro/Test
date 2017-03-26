@@ -5,9 +5,6 @@ package ph.com.montrichard.bisaya.production.service;
 
 import java.math.BigInteger;
 import java.util.Collection;
-import java.util.Date;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -44,6 +41,14 @@ public class ProductionService extends AbstractService<Production, BigInteger> i
 	}
 	
 	@Override
+	public Production create( Production production ){
+		production.setCreatedBy("ADMIN");
+		super.create(production);
+		
+		return production;
+	}
+	
+	@Override
 	public Collection<OrderDto> getOrders(){
 		String url = String.format("http://%s/order/api", Constants.ORDER_SERVICE);
 		Collection<OrderDto> orders = restTemplate.getForObject(url, Collection.class);
@@ -70,12 +75,9 @@ public class ProductionService extends AbstractService<Production, BigInteger> i
 	}
 	
 	@Override
-	public OrderDto update( OrderDto order ){
+	public OrderDto updateOrder( OrderDto order ){
 		String url = String.format("http://%s/order/api", Constants.ORDER_SERVICE);
-		
-		System.out.println( order );
 		restTemplate.put(url, order);
-		
 		return order;
 	}
 

@@ -36,9 +36,18 @@
 			if( order.availability != 'AVAILABLE'){
 				order.status = 'REJECTED';
 			}
-			productionService.schedule( order ).then(function( result ){
-				getOrders();
+			
+			var production = {
+				orderId : order.id,
+				status : order.status
+			}
+			
+			productionService.create( production ).then(function(prodResult){
+				productionService.schedule( order ).then(function( orderResult ){
+					getOrders();
+				});
 			});
+			
 		}
 	}
 	

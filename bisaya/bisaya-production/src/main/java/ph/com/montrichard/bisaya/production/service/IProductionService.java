@@ -23,5 +23,5 @@ public interface IProductionService extends IService<Production, BigInteger>{
 	
 	public Collection<OrderDto> getOrderByProductionStartDate( Long productionStartDate );
 	
-	public OrderDto update( OrderDto order );
+	public OrderDto updateOrder( OrderDto order );
 }

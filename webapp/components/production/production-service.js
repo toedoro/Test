@@ -7,9 +7,11 @@
 			headers : {'Accept' : 'application/json'}
 		};
 		return {
-			schedule: function( order ){
+			create: function( production ){
+				var url = "http://127.0.0.1:9002/production/api";
+				return $http.post(url, production);
+			}, schedule: function( order ){
 				var url = "http://127.0.0.1:9002/production/api/order";
-				console.log( order );
 				return $http.put(url, order);
 			}, getOrders: function(){
 				var url = "http://127.0.0.1:9002/production/api/orders";
